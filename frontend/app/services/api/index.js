@@ -2,15 +2,17 @@
 import axios from 'axios';
 import * as appTypes from "containers/App/constants/types";
 
+
 const restApi = axios.create({
-    baseURL: '/api/v1',
+    baseURL: process.env.NODE_ENV === 'development' ? 'http://localhost:3025/v1' : '/api/v1',
 });
 
 restApi.interceptors.request.use((config) => {
     // eslint-disable-next-line
     const authKey = window.__global_store__.getState().userData.authKey;
     // eslint-disable-next-line
-    config.headers.Authorization = `${authKey}` || `1f9d364c9d2e6b3383b6b684b66e2047d7ef9ea2`;
+    // config.headers.Authorization = `${authKey}` || `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MzMwMzIyOTgsImlhdCI6MTUzMjk0MjI5OCwic3ViIjoiNWI1ZWQ3ZGFkYWVkNGYyYjUzZTIwNjE5In0.X7GI8xtdCC5rf-jBdFnzJQsv9almLqui04XHVdLerRc`;
+    config.headers.Authorization = `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MzMwMzIyOTgsImlhdCI6MTUzMjk0MjI5OCwic3ViIjoiNWI1ZWQ3ZGFkYWVkNGYyYjUzZTIwNjE5In0.X7GI8xtdCC5rf-jBdFnzJQsv9almLqui04XHVdLerRc`;
     return config;
 }, (error) => Promise.reject(error));
 
@@ -67,7 +69,7 @@ export const postToSupport = (data) => {
 
 
 //export const loginRequest = (params) => restApi.post(`/account/login`, {...params});
-export const testRequest = (params) => restApi.post(`/users`, {...params});
+export const testRequest = (params) => restApi(`/users`, {...params});
 /*------------------------------------
           / api common functions
 ---------------------------------------*/

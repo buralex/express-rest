@@ -76,7 +76,7 @@ class Login extends React.PureComponent {
                     this.props.test()
                 }}
                 >
-                test
+                test new
                 </Button>
 
                 {/*<section className="land-top">*/}
