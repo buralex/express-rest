@@ -6,6 +6,7 @@ import {
     loginRequest,
     fetchEnquiryTypes,
     postToSupport,
+    testRequest,
 } from "services/api";
 
 import * as modalNames from 'components/modals/names';
@@ -44,6 +45,34 @@ export function login(values) {
             dispatch(showLoader());
 
             const data = await loginRequest({ email, password }).then(res => res.data);
+
+            dispatch({
+                type: types.LOGIN_SUCCESS,
+                payload: data,
+            });
+
+            dispatch(hideLoader());
+            return data
+
+        } catch (e) {
+            dispatch(serverError(e));
+        }
+    };
+}
+
+/**
+ * Login
+ */
+export function test(values) {
+    return async (dispatch) => {
+
+        //const {email, password} = values;
+
+        try {
+            dispatch(showLoader());
+
+            //const data = await testRequest({ email, password }).then(res => res.data);
+            const data = await testRequest().then(res => res.data);
 
             dispatch({
                 type: types.LOGIN_SUCCESS,

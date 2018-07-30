@@ -68,74 +68,85 @@ class Login extends React.PureComponent {
 
         return (
             <div className="login-container">
-                <section className="land-top">
-                    <div className="max-width">
-                        <div className="content navbar">
-                            <a className="logo" href="/"> <img src={Logo} alt="Denteez logo" /> </a>
-                            {pathname === '/login/support' ?
-                                <Button color="success" size="sm" tag={Link} to="/login">Log In Now</Button>
-                                :
-                                <Button
-                                    color="success"
-                                    size="sm"
-                                    onClick={() => this.props.showAlert(modalNames.INFO_MODAL, signup)}
-                                >
-                                    Sign up now
-                                </Button>
-                            }
-                        </div>
 
-                        <h1 className="text-truncate">Home of Dentistry</h1>
-                        <h6>
-                            Denteez was created by dentists for dentistry in order to
-                            make the life of everyone involved in dentistry easier.
-                        </h6>
-                    </div>
+                <Button
+                color="success"
+                size="sm"
+                onClick={() => {
+                    this.props.test()
+                }}
+                >
+                test
+                </Button>
 
-                </section>
+                {/*<section className="land-top">*/}
+                    {/*<div className="max-width">*/}
+                        {/*<div className="content navbar">*/}
+                            {/*<a className="logo" href="/"> <img src={Logo} alt="Denteez logo" /> </a>*/}
+                            {/*{pathname === '/login/support' ?*/}
+                                {/*<Button color="success" size="sm" tag={Link} to="/login">Log In Now</Button>*/}
+                                {/*:*/}
+                                {/*<Button*/}
+                                    {/*color="success"*/}
+                                    {/*size="sm"*/}
+                                    {/*onClick={() => this.props.showAlert(modalNames.INFO_MODAL, signup)}*/}
+                                {/*>*/}
+                                    {/*Sign up now*/}
+                                {/*</Button>*/}
+                            {/*}*/}
+                        {/*</div>*/}
 
-                <section className="land-middle">
-                    <div className="max-width">
-                        {pathname.includes('support') &&
-                        <SupportForm
-                            loading={loading}
-                            initialValues={this.initValues}
-                            onSubmit={this.props.postEnquiry}
-                            enquiryTypes={enquiryTypes}
-                            isEnqTypeOther={currentEnqType === 'Other'}
-                        />
-                        }
+                        {/*<h1 className="text-truncate">Home of Dentistry</h1>*/}
+                        {/*<h6>*/}
+                            {/*Denteez was created by dentists for dentistry in order to*/}
+                            {/*make the life of everyone involved in dentistry easier.*/}
+                        {/*</h6>*/}
+                    {/*</div>*/}
 
-                        {!pathname.includes('support') &&
-                        <LoginForm loading={loading} onSubmit={this.handleLogin} />
-                        }
-                    </div>
-                </section>
+                {/*</section>*/}
 
-                <section className="land-bottom">
-                    <div className="max-width">
-                        <h2 className="text-truncate">About Denteez</h2>
+                {/*<section className="land-middle">*/}
+                    {/*<div className="max-width">*/}
+                        {/*{pathname.includes('support') &&*/}
+                        {/*<SupportForm*/}
+                            {/*loading={loading}*/}
+                            {/*initialValues={this.initValues}*/}
+                            {/*onSubmit={this.props.postEnquiry}*/}
+                            {/*enquiryTypes={enquiryTypes}*/}
+                            {/*isEnqTypeOther={currentEnqType === 'Other'}*/}
+                        {/*/>*/}
+                        {/*}*/}
 
-                        <div className="row no-gutters text-left">
-                            <div className="col-6">
-                                <p>
-                                    Why is it always so difficult to find what you are looking for in dentistry? Whether it is
-                                    the latest advancement in technology or techniques or simply a review or
-                                    understanding of the vast amount of products? Perhaps finding someone to just fix
-                                    your broken equipment or simply hiring new staff or looking for that new job?
-                                </p>
-                            </div>
-                            <div className="col-6">
-                                <p>
-                                    Our mission is to give every dental professional the possibility to discuss and share all
-                                    aspects of their profession, their practice and their business. We aim to make the world
-                                    of dentistry easy and accessible, so every dental professional can find what they are
-                                    looking for quickly and easily all in one place.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                        {/*{!pathname.includes('support') &&*/}
+                        {/*<LoginForm loading={loading} onSubmit={this.handleLogin} />*/}
+                        {/*}*/}
+                    {/*</div>*/}
+                {/*</section>*/}
+
+                {/*<section className="land-bottom">*/}
+                    {/*<div className="max-width">*/}
+                        {/*<h2 className="text-truncate">About Denteez</h2>*/}
+
+                        {/*<div className="row no-gutters text-left">*/}
+                            {/*<div className="col-6">*/}
+                                {/*<p>*/}
+                                    {/*Why is it always so difficult to find what you are looking for in dentistry? Whether it is*/}
+                                    {/*the latest advancement in technology or techniques or simply a review or*/}
+                                    {/*understanding of the vast amount of products? Perhaps finding someone to just fix*/}
+                                    {/*your broken equipment or simply hiring new staff or looking for that new job?*/}
+                                {/*</p>*/}
+                            {/*</div>*/}
+                            {/*<div className="col-6">*/}
+                                {/*<p>*/}
+                                    {/*Our mission is to give every dental professional the possibility to discuss and share all*/}
+                                    {/*aspects of their profession, their practice and their business. We aim to make the world*/}
+                                    {/*of dentistry easy and accessible, so every dental professional can find what they are*/}
+                                    {/*looking for quickly and easily all in one place.*/}
+                                {/*</p>*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
+                {/*</section>*/}
             </div>
         );
     }
@@ -149,6 +160,7 @@ Login.propTypes = {
 export const mapDispatchToProps = (dispatch) => ({
     postEnquiry: (values) => dispatch(appActions.postEnquiry(values)),
     login: (values) => dispatch(appActions.login(values)),
+    test: (values) => dispatch(appActions.test(values)),
     showAlert: (modalName, data) => dispatch(appActions.showAlert(modalName, data)),
 
     /* -------------------- withData hoc ---------------------------------- */

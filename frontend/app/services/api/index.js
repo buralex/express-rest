@@ -3,7 +3,7 @@ import axios from 'axios';
 import * as appTypes from "containers/App/constants/types";
 
 const restApi = axios.create({
-    baseURL: '//504080.com/api/v1',
+    baseURL: '/api/v1',
 });
 
 restApi.interceptors.request.use((config) => {
@@ -66,7 +66,8 @@ export const postToSupport = (data) => {
 };
 
 
-export const loginRequest = (params) => restApi.post(`/account/login`, {...params});
+//export const loginRequest = (params) => restApi.post(`/account/login`, {...params});
+export const testRequest = (params) => restApi.post(`/users`, {...params});
 /*------------------------------------
           / api common functions
 ---------------------------------------*/
